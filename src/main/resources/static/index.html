@@ -5,63 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="jquery/jquery-1.8.2.min.js"></script>
+    <link href="jcountdown/jcountdown.css" rel="stylesheet" type="text/css">
+    <script src="jcountdown/jquery.jcountdown.min.js"></script>
     <title>欢迎我亲爱的小马，么么哒！</title>
     <script src="js/jquery.min.js"></script>
     <style>
-        #neon-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            height: 100vh;
-            background: #031628;
-        }
-
-        .btn {
-            border: 1px solid;
-            background-color: transparent;
-            text-transform: uppercase;
-            font-size: 14px;
-            padding: 10px 20px;
-            font-weight: 300;
-        }
-
-        .one {
-            color: #4cc9f0;
-        }
-
-        .two {
-            color: #f038ff;
-        }
-
-        .three {
-            color: #b9e769;
-        }
-
-        .btn:hover {
-            color: white;
-            border: 0;
-        }
-
-        .one:hover {
-            background-color: #4cc9f0;
-            -webkit-box-shadow: 10px 10px 99px 6px rgba(76,201,240,1);
-            -moz-box-shadow: 10px 10px 99px 6px rgba(76,201,240,1);
-            box-shadow: 10px 10px 99px 6px rgba(76,201,240,1);
-        }
-
-        .two:hover {
-            background-color: #f038ff;
-            -webkit-box-shadow: 10px 10px 99px 6px rgba(240, 56, 255, 1);
-            -moz-box-shadow: 10px 10px 99px 6px rgba(240, 56, 255, 1);
-            box-shadow: 10px 10px 99px 6px rgba(240, 56, 255, 1);
-        }
-
-        .three:hover {
-            background-color: #b9e769;
-            -webkit-box-shadow: 10px 10px 99px 6px rgba(185, 231, 105, 1);
-            -moz-box-shadow: 10px 10px 99px 6px rgba(185, 231, 105, 1);
-            box-shadow: 10px 10px 99px 6px rgba(185, 231, 105, 1);
-        }
 
         body {
             font-family: Arial, sans-serif;
@@ -80,6 +29,19 @@
             height: 100vh;
         }
 
+        .countdown{
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            line-height: 80px;
+            /* border: 1px solid rgb(190, 22, 134); */
+            text-align: center;
+            font-size: 25px;
+            color: #fff;
+        }
+
         h1 {
             text-align: center;
             color: #fff;
@@ -92,17 +54,57 @@
             display: inline-block;
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #4CAF50;
+            background-color: #af4c4c;
+            border:px solid #ac4caf;
             color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 40px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
-        .button:hover {
-            background-color: #45a049;
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
         }
+
+        .button:hover {
+            background-color: #7c37f3;
+        }
+
+        .circle-button {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: rgb(59, 78, 61);
+            border-radius: 50%;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            color: white;
+            font-size: x-small;
+        }
+        .circle-button:active {
+            background-color: rgb(59, 78, 61);
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+
+        .return-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px;
+            background-color: #ccc;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
 
         .file-input {
             display: none;
@@ -112,16 +114,22 @@
             display: inline-block;
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #4CAF50;
+            background-color: #af4c4c;
             color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 40px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
         .file-label:hover {
-            background-color: #45a049;
+            background-color: #7c37f3;
+        }
+
+        .file-label:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
         }
 
 
@@ -153,10 +161,10 @@
 
         @keyframes glow {
             from {
-                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4CAF50, 0 0 40px #4CAF50, 0 0 50px #4CAF50, 0 0 60px #4CAF50;
+                text-shadow: 0 0 5px rgb(184, 69, 69), 0 0 10px #fff, 0 0 20px #c48383, 0 0 30px #af4c86, 0 0 40px #af4c86, 0 0 50px #af4c86, 0 0 60px #999e9a;
             }
             to {
-                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #4CAF50, 0 0 50px #4CAF50, 0 0 60px #4CAF50, 0 0 70px #4CAF50;
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px rgb(255, 255, 255), 0 0 40px #5c5358, 0 0 50px #f80909, 0 0 60px #af814c, 0 0 70px #af4c4c;
             }
         }
     </style>
@@ -164,7 +172,11 @@
 <body>
 <canvas id="canvas"></canvas>
 
+<div class="countdown">
+    <button class="circle-button" onclick="location.href='love.html'">小惊喜</button>
+</div>
 <div class="container">
+
 
     <h1 class="glow">欢迎我亲爱的小马，么么哒！</h1>
     <a class="button" onclick="downloadTemplate()">宝贝请下载模板</a>
@@ -180,6 +192,32 @@
 </div>
 <span class="js-cursor-container"></span>
 <script>
+    $(function(){
+        var b = new Date;
+        var b = -b.getTimezoneOffset() / 60;
+        var i = '2015/02/18 00:00:00';
+        var config = {
+            timeText: i, //倒计时时间
+            timeZone: b, //时区
+            style: "flip", //显示的样式，可选值有flip,slide,metal,crystal
+            color: "white", //显示的颜色，可选值white,black
+            width: 0, //倒计时宽度
+            textGroupSpace: 15, //天、时、分、秒之间间距
+            textSpace: 0, //数字之间间距
+            reflection: !0, //是否显示倒影
+            reflectionOpacity: 10, //倒影透明度
+            reflectionBlur: 0, //倒影模糊程度
+            dayTextNumber: 3, //倒计时天数数字个数
+            displayDay: !0, //是否显示天数
+            displayHour: !0, //是否显示小时数
+            displayMinute: !0, //是否显示分钟数
+            displaySecond: !0, //是否显示秒数
+            displayLabel: !0, //是否显示倒计时底部label
+            onFinish: function() {}
+        };
+        $(".countdown").jCountdown(config);
+    });
+
     (function fairyDustCursor() {
 
         var possibleColors = ["#D61C59", "#E7D84B", "#1B8798"]
@@ -406,10 +444,6 @@
 
         window.location.href = '/downloadFile/宝贝的最终结果.xlsx';
     }
-
-
-
-
 
 </script>
 </body>

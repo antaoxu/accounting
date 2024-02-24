@@ -5,11 +5,14 @@ import com.xat.service.IExcelProcessService;
 import com.xat.service.IShouldPayService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -26,13 +29,18 @@ public class CalculateController {
     public static final String inputFile = "/root/account/input/";
     public static final String midOutputFile = "/root/account/mid/mid.xlsx";
     public static final String outputFile = "/root/account/result/宝贝的最终结果.xlsx";
+
+    /*public static final String inputFile = "D:\\download\\Tim\\";
+    public static final String midOutputFile = "D:\\download\\Tim\\mid.xlsx";
+    public static final String outputFile = "D:\\download\\Tim\\test\\宝贝的最终结果.xlsx";*/
     // 读取原始 Excel 文件
 
     @PostMapping("/payCalculate")
-    public String payCalculate(@RequestBody MultipartFile file) {
+    public String payCalculate(@RequestBody MultipartFile file) throws IOException {
         // 输入的 Excel 文件路径
         String filePath = inputFile+"/"+ file.getOriginalFilename();
         log.info("读取文件的路径为：{}",filePath);
+        //FileCopyUtils.copy((File) file,new File(filePath));
         List<ExcelData> dataList = excelProcessService.readExcel(filePath);
 
         log.info("文件读取结束，开始转换文件");

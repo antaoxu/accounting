@@ -32,7 +32,7 @@ public class FileHandleController {
     public ResponseEntity<String> uploadFile(@RequestBody MultipartFile file) {
         try {
             // 指定上传文件保存的路径
-            String uploadPath = "D:\\download\\Tim\\test\\";
+            String uploadPath = "/root/account/input/";
             // 获取上传文件的原始文件名
             String fileName = file.getOriginalFilename();
             log.info("文件名为：{}",fileName);
