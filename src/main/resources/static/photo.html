@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>满满的回忆</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+
+
+    <style type="text/css">
+        *{padding: 0;
+            margin: 0;}
+        body,html{height:100%;}
+
+        body{background-image: url("image/back.jpg");background-size: 100% 100%;}
+        #box{width: 400px;
+            height: 400px;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top:0;
+            bottom: 0;
+            margin: auto;
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg);
+            animation: go 45s linear infinite;
+        }
+        #box img{width: 400px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #box:hover{
+            animation-play-state: paused;}
+        /* #box img:nth-child(1):hover{transform: scale(2,2);}
+        #box img:nth-child(2):hover{ transform: scale(2,2);}
+        #box img:nth-child(3):hover{ transform: scale(2,2);}
+        #box img:nth-child(4):hover{ transform: scale(2,2);}
+        #box img:nth-child(5):hover{ transform: scale(2,2);}
+        #box img:nth-child(6):hover{ transform: scale(2,2);}
+        #box img:nth-child(7):hover{ transform: scale(2,2);}
+        #box img:nth-child(8):hover{ transform: scale(2,2);}
+        #box img:nth-child(9):hover{ transform: scale(2,2);}
+        #box img:nth-child(10):hover{ transform: scale(2,2);} */
+        #box img:nth-child(1){
+            transform: rotateY(0deg) translateZ(650px);}
+        #box img:nth-child(2){
+            transform: rotateY(36deg) translateZ(650px);}
+        #box img:nth-child(3){
+            transform: rotateY(72deg) translateZ(650px);}
+        #box img:nth-child(4){
+            transform: rotateY(108deg) translateZ(650px);}
+        #box img:nth-child(5){
+            transform: rotateY(144deg) translateZ(650px);}
+        #box img:nth-child(6){
+            transform: rotateY(180deg) translateZ(650px);}
+        #box img:nth-child(7){
+            transform: rotateY(216deg) translateZ(650px);}
+        #box img:nth-child(8){
+            transform: rotateY(252deg) translateZ(650px);}
+        #box img:nth-child(9){
+            transform: rotateY(288deg) translateZ(650px);}
+        #box img:nth-child(10){
+            transform: rotateY(324deg) translateZ(650px);}
+        @keyframes go {
+            0%{transform: rotateX(0deg) rotateY(0deg);}
+            25%{transform: rotateX(20deg) rotateY(180deg);}
+            50%{transform: rotateX(0deg) rotateY(360deg);}
+            75%{transform: rotateX(-20deg) rotateY(540deg);}
+            100%{transform: rotateX(0deg) rotateY(720deg);}
+        }
+
+        .return-button {
+            position: fixed;
+            bottom: 10px;
+            left: 20px;
+            padding: 10px;
+            background-color: #ccc;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #6d475f;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .modal-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #177f99;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<!-- <body>
+<button class="return-button" onclick="alter('看够了吗？')">返回</button> -->
+<button class="return-button" onclick="showModal()">返回</button>
+
+<!-- <div id="modal" class="modal">
+    <div class="modal-content">
+        <p>接下来有彩蛋哦，看还是不看呢？</p>
+        <div class="modal-buttons">
+            <button onclick="redirectToNewPage()">必须看</button>
+            <button onclick="redirectToHomePage()">哼，就不看</button>
+        </div>
+    </div>
+</div> -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+<script>
+    function showModal() {
+        Swal.fire({
+            title: '接下来有彩蛋哦，看还是不看呢？',
+            showCancelButton: true,
+            confirmButtonText: '必须看',
+            cancelButtonText: '哼，就不看!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                redirectToNewPage();
+            } else {
+                redirectToHomePage();
+            }
+        });
+    }
+    // function showModal() {
+    //     var modal = document.getElementById("modal");
+    //     modal.style.display = "block";
+    // }
+
+    function redirectToNewPage() {
+        window.location.href = "fire.html";
+    }
+
+    function redirectToHomePage() {
+        window.location.href = "index.html";
+    }
+</script>
+<div id="box">
+    <img src="image/1.jpg">
+    <img src="image/2.jpg">
+    <img src="image/3.jpg">
+    <img src="image/4.jpg">
+    <img src="image/5.jpg">
+    <img src="image/6.jpg">
+    <img src="image/7.jpg">
+    <img src="image/8.jpg">
+    <img src="image/9.jpg">
+    <img src="image/10.jpg">
+</div>
+<audio controls>
+    <source src="music/123.ogg" type="audio/ogg">
+    <source src="music/123.mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>
