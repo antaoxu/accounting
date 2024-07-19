@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天窗口</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .chat-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        .chat-header {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .message {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            background-color: #e9e9e9;
+            max-width: 70%;
+        }
+
+        .user-message {
+            margin-left: auto;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .message-input {
+            width: calc(100% - 100px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .send-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .send-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="chat-container">
+    <div class="chat-header">聊天窗口</div>
+    <div class="messages">
+        <!-- 消息显示区域 -->
+        <div class="message">你好，很高兴见到你！</div>
+        <div class="user-message">你好，Kimi！</div>
+    </div>
+    <div>
+        <input type="text" class="message-input" placeholder="输入你的消息...">
+        <button class="send-button" onclick="sendMessage()">发送</button>
+    </div>
+</div>
+
+<script>
+    function sendMessage() {
+        var userInput = document.querySelector('.message-input').value;
+        var messages = document.querySelector('.messages');
+        var userMessage = document.createElement('div');
+        userMessage.className = 'user-message';
+        userMessage.textContent = userInput;
+        messages.appendChild(userMessage);
+
+        var botMessage = document.createElement('div');
+        botMessage.className = 'message';
+        botMessage.textContent = '回复：' + userInput; // 简单模拟回复
+        messages.appendChild(botMessage);
+
+        document.querySelector('.message-input').value = ''; // 清空输入框
+    }
+</script>
+</body>
+</html>
